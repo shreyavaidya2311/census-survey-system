@@ -12,6 +12,7 @@ import {
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
+import axios from "axios";
 
 const steps = ["Page 1", "Page 2", "Page 3"];
 
@@ -37,6 +38,17 @@ const CensusForm = () => {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+  };
+
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:8000/submit-form/", { name: "shreya" })
+      .then((res) => {
+        handleNext();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (
@@ -70,14 +82,23 @@ const CensusForm = () => {
                     Back
                   </Button>
                 )}
-
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1 ? "Submit" : "Next"}
-                </Button>
+                {activeStep === steps.length - 1 ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleSubmit}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    Submit
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    Next
+                  </Button>
+                )}
               </Box>
             </>
           )}
