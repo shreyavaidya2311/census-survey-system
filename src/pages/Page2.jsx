@@ -232,7 +232,7 @@ const Page2 = () => {
           style={{
             margin: "1.5em",
             width: "12em",
-            border: "1px solid royalblue",
+            border: "1px solid #7431a7",
             borderRadius: "10px",
           }}
         />
@@ -244,7 +244,7 @@ const Page2 = () => {
         </Typography>
       </center>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
             id="fno"
@@ -255,7 +255,7 @@ const Page2 = () => {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6}>
           <FormControl component="fieldset">
             <FormLabel>Marital Status</FormLabel>
             <RadioGroup row name="marital">
@@ -272,6 +272,7 @@ const Page2 = () => {
             </RadioGroup>
           </FormControl>
         </Grid>
+
         <Grid item xs={12}>
           <TextField
             required

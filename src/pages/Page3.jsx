@@ -126,7 +126,7 @@ const Page3 = () => {
           style={{
             margin: "1.5em",
             width: "12em",
-            border: "0.75px solid royalblue",
+            border: "0.75px solid #7431a7",
             borderRadius: "10px",
           }}
         />
