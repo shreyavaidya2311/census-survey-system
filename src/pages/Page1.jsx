@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Typography, TextField, MenuItem } from "@mui/material";
 import { LocalizationProvider, DesktopDatePicker } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
-const Page1 = () => {
-  const [value, setValue] = useState(new Date());
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
+const Page1 = (props) => {
+  const handleDate = (newValue) => {
+    props.setDOB(newValue);
   };
 
   const gender = [
@@ -40,6 +38,8 @@ const Page1 = () => {
             label="First Name"
             fullWidth
             variant="standard"
+            value={props.firstName}
+            onChange={(e) => props.setFirstName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -50,6 +50,8 @@ const Page1 = () => {
             label="Middle Name"
             fullWidth
             variant="standard"
+            value={props.middleName}
+            onChange={(e) => props.setMiddleName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -60,6 +62,8 @@ const Page1 = () => {
             label="Last Name"
             fullWidth
             variant="standard"
+            value={props.lastName}
+            onChange={(e) => props.setLastName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={8}>
@@ -67,8 +71,8 @@ const Page1 = () => {
             <DesktopDatePicker
               label="Date of Birth"
               inputFormat="dd/MM/yyyy"
-              value={value}
-              onChange={handleChange}
+              value={props.dob}
+              onChange={handleDate}
               renderInput={(params) => <TextField {...params} fullWidth />}
             />
           </LocalizationProvider>
@@ -82,6 +86,8 @@ const Page1 = () => {
             type="number"
             fullWidth
             variant="standard"
+            value={props.age}
+            onChange={(e) => props.setAge(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -104,10 +110,19 @@ const Page1 = () => {
             type="number"
             fullWidth
             variant="standard"
+            value={props.phoneno}
+            onChange={(e) => props.setPhoneNo(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
-          <TextField id="gender" select label="Gender" fullWidth>
+          <TextField
+            id="gender"
+            select
+            label="Gender"
+            fullWidth
+            value={props.gender}
+            onChange={(e) => props.setGender(e.target.value)}
+          >
             {gender.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
@@ -124,6 +139,8 @@ const Page1 = () => {
             type="number"
             fullWidth
             variant="standard"
+            value={props.aadharno}
+            onChange={(e) => props.setAadharNo(e.target.value)}
           />
         </Grid>
       </Grid>

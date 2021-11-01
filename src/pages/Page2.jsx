@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Autocomplete } from "@mui/lab";
 
-const Page2 = () => {
+const Page2 = (props) => {
   const religion = [
     { value: "Hindu", label: "Hindu" },
     { value: "Muslim", label: "Muslim" },
@@ -175,6 +175,8 @@ const Page2 = () => {
             disablePortal
             id="region"
             options={region}
+            value={props.region}
+            onInputChange={(event, value) => props.setRegion(value)}
             fullWidth
             renderInput={(params) => <TextField {...params} label="Region" />}
           />
@@ -184,6 +186,8 @@ const Page2 = () => {
             disablePortal
             id="religion"
             options={religion}
+            value={props.religion}
+            onInputChange={(event, value) => props.setReligion(value)}
             fullWidth
             renderInput={(params) => <TextField {...params} label="Religion" />}
           />
@@ -197,11 +201,18 @@ const Page2 = () => {
             type="number"
             fullWidth
             variant="standard"
+            value={props.pincode}
+            onChange={(e) => props.setPincode(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={5}>
           <FormControl component="fieldset">
-            <RadioGroup row name="locality">
+            <RadioGroup
+              row
+              name="locality"
+              value={props.locality}
+              onChange={(e) => props.setLocality(e.target.value)}
+            >
               <FormControlLabel
                 value="Urban"
                 control={<Radio />}
@@ -224,6 +235,8 @@ const Page2 = () => {
             type="text"
             fullWidth
             variant="standard"
+            value={props.mothertongue}
+            onChange={(e) => props.setMotherTongue(e.target.value)}
           />
         </Grid>
       </Grid>
@@ -253,12 +266,19 @@ const Page2 = () => {
             type="number"
             fullWidth
             variant="standard"
+            value={props.familyno}
+            onChange={(e) => props.setFamilyNo(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl component="fieldset">
             <FormLabel>Marital Status</FormLabel>
-            <RadioGroup row name="marital">
+            <RadioGroup
+              row
+              name="marital"
+              value={props.married}
+              onChange={(e) => props.setMarried(e.target.value)}
+            >
               <FormControlLabel
                 value="Single"
                 control={<Radio />}
@@ -282,6 +302,8 @@ const Page2 = () => {
             type="text"
             fullWidth
             variant="standard"
+            value={props.diseases}
+            onChange={(e) => props.setDiseases(e.target.value)}
           />
         </Grid>
       </Grid>

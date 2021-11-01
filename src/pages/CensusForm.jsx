@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -16,21 +16,99 @@ import axios from "axios";
 
 const steps = ["Page 1", "Page 2", "Page 3"];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Page1 />;
-    case 1:
-      return <Page2 />;
-    case 2:
-      return <Page3 />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 const CensusForm = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [firstName, setFirstName] = useState(null);
+  const [middleName, setMiddleName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [dob, setDOB] = useState(new Date());
+  const [age, setAge] = useState(null);
+  const [phoneno, setPhoneNo] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [aadharno, setAadharNo] = useState(null);
+  const [region, setRegion] = useState(null);
+  const [religion, setReligion] = useState(null);
+  const [pincode, setPincode] = useState(null);
+  const [locality, setLocality] = useState(null);
+  const [mothertongue, setMotherTongue] = useState(null);
+  const [familyno, setFamilyNo] = useState(null);
+  const [married, setMarried] = useState(null);
+  const [diseases, setDiseases] = useState(null);
+  const [education, setEducation] = useState(null);
+  const [employed, setEmployed] = useState(null);
+  const [income, setIncome] = useState(null);
+  const [occupation, setOccupation] = useState(null);
+  const [vaccinated, setVaccinated] = useState(null);
+  const [infected, setInfected] = useState(null);
+  const [connectivity, setConnectivity] = useState(null);
+
+  const getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return (
+          <Page1
+            firstName={firstName}
+            setFirstName={setFirstName}
+            middleName={middleName}
+            setMiddleName={setMiddleName}
+            lastName={lastName}
+            setLastName={setLastName}
+            dob={dob}
+            setDOB={setDOB}
+            age={age}
+            setAge={setAge}
+            phoneno={phoneno}
+            setPhoneNo={setPhoneNo}
+            gender={gender}
+            setGender={setGender}
+            aadharno={aadharno}
+            setAadharNo={setAadharNo}
+          />
+        );
+      case 1:
+        return (
+          <Page2
+            region={region}
+            setRegion={setRegion}
+            religion={religion}
+            setReligion={setReligion}
+            pincode={pincode}
+            setPincode={setPincode}
+            locality={locality}
+            setLocality={setLocality}
+            mothertongue={mothertongue}
+            setMotherTongue={setMotherTongue}
+            familyno={familyno}
+            setFamilyNo={setFamilyNo}
+            married={married}
+            setMarried={setMarried}
+            diseases={diseases}
+            setDiseases={setDiseases}
+          />
+        );
+      case 2:
+        return (
+          <Page3
+            education={education}
+            setEducation={setEducation}
+            employed={employed}
+            setEmployed={setEmployed}
+            income={income}
+            setIncome={setIncome}
+            occupation={occupation}
+            setOccupation={setOccupation}
+            vaccinated={vaccinated}
+            setVaccinated={setVaccinated}
+            infected={infected}
+            setInfected={setInfected}
+            connectivity={connectivity}
+            setConnectivity={setConnectivity}
+          />
+        );
+      default:
+        throw new Error("Unknown step");
+    }
+  };
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -41,8 +119,31 @@ const CensusForm = () => {
   };
 
   const handleSubmit = () => {
+    const body = {
+      name: firstName + " " + middleName + " " + lastName,
+      dob,
+      age,
+      phoneno,
+      gender,
+      aadharno,
+      region,
+      religion,
+      pincode,
+      locality,
+      mothertongue,
+      familyno,
+      married,
+      diseases,
+      education,
+      employed,
+      income,
+      occupation,
+      vaccinated,
+      infected,
+      connectivity,
+    };
     axios
-      .post("http://localhost:8000/submit-form/", { name: "shreya" })
+      .post("http://localhost:8000/submit-form/", body)
       .then((res) => {
         handleNext();
       })
