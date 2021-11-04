@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Census Data Analysis
+
+Getting comparitive studies done and finding inferences between various attributes we collect via the Census form.
+(example - infering how many people who are educated are employed and this is compared wrt gender)
+This data will help in many things such as - providing a basis to form various schemes brought forward by the government, help businesses with their target audiences.
+ 
