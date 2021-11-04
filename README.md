@@ -74,4 +74,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Getting comparitive studies done and finding inferences between various attributes we collect via the Census form.
 (example - infering how many people who are educated are employed and this is compared wrt gender)
 This data will help in many things such as - providing a basis to form various schemes brought forward by the government, help businesses with their target audiences.
+
+### Here are some examples -
+![WhatsApp Image 2021-11-04 at 9 38 21 AM](https://user-images.githubusercontent.com/69303551/140256844-c3c30d4b-6e5a-4622-8ac5-2d24a1252709.jpeg)
+![WhatsApp Image 2021-11-04 at 9 38 54 AM](https://user-images.githubusercontent.com/69303551/140256871-1f2c8140-95c4-4ab3-9677-91c3d7c8c76d.jpeg)
+![WhatsApp Image 2021-11-04 at 9 40 52 AM](https://user-images.githubusercontent.com/69303551/140256886-5af2f5cf-ffef-415c-b394-6a45c23fb2f7.jpeg)
+![WhatsApp Image 2021-11-04 at 9 40 55 AM](https://user-images.githubusercontent.com/69303551/140256900-c926d3be-e4b0-4330-87e8-7ba0fb783fa0.jpeg)
+
  
