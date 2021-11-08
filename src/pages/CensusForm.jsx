@@ -13,6 +13,9 @@ import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Loader from "../components/Loader";
+import { BarChart } from "@mui/icons-material";
 
 const steps = ["Page 1", "Page 2", "Page 3"];
 
@@ -41,6 +44,9 @@ const CensusForm = () => {
   const [vaccinated, setVaccinated] = useState(null);
   const [infected, setInfected] = useState(null);
   const [connectivity, setConnectivity] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [analytics, setAnalytics] = useState(false);
 
   const getStepContent = (step) => {
     switch (step) {
@@ -142,9 +148,12 @@ const CensusForm = () => {
       infected,
       connectivity,
     };
+    setLoading(true);
     axios
       .post("http://localhost:8000/submit-form/", body)
       .then((res) => {
+        setData(res.data);
+        setLoading(false);
         handleNext();
       })
       .catch((e) => {
@@ -152,60 +161,89 @@ const CensusForm = () => {
       });
   };
 
+  if (analytics) {
+    return (
+      <>
+        <Navbar />
+        <div
+          style={{ marginTop: "7em" }}
+          dangerouslySetInnerHTML={{ __html: data }}
+        />
+      </>
+    );
+  }
+
   return (
-    <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-      <Paper
-        variant="outlined"
-        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-      >
-        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <>
-          {activeStep === steps.length ? (
-            <>
-              <center>
-                <Typography variant="h6" gutterBottom>
-                  The form has been submitted successfully!
-                </Typography>
-              </center>
-            </>
-          ) : (
-            <>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
-                {activeStep === steps.length - 1 ? (
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    Submit
-                  </Button>
+    <>
+      <Navbar />
+      <div style={{ marginTop: "7em" }}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+            <Paper
+              variant="outlined"
+              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+            >
+              <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+              <>
+                {activeStep === steps.length ? (
+                  <>
+                    <center>
+                      <Typography variant="h6" gutterBottom>
+                        The form has been submitted successfully!
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<BarChart />}
+                        onClick={() => setAnalytics(true)}
+                      >
+                        View Analytics
+                      </Button>
+                    </center>
+                  </>
                 ) : (
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    Next
-                  </Button>
+                  <>
+                    {getStepContent(activeStep)}
+                    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                      {activeStep !== 0 && (
+                        <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                          Back
+                        </Button>
+                      )}
+                      {activeStep === steps.length - 1 ? (
+                        <Button
+                          variant="contained"
+                          onClick={handleSubmit}
+                          sx={{ mt: 3, ml: 1 }}
+                        >
+                          Submit
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          onClick={handleNext}
+                          sx={{ mt: 3, ml: 1 }}
+                        >
+                          Next
+                        </Button>
+                      )}
+                    </Box>
+                  </>
                 )}
-              </Box>
-            </>
-          )}
-        </>
-      </Paper>
-    </Container>
+              </>
+            </Paper>
+          </Container>
+        )}
+      </div>
+    </>
   );
 };
 

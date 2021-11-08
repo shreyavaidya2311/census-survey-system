@@ -142,7 +142,7 @@ const Page3 = (props) => {
           style={{
             margin: "1.5em",
             width: "12em",
-            border: "0.75px solid #7431a7",
+            border: "0.75px solid #0288d1",
             borderRadius: "10px",
           }}
         />
