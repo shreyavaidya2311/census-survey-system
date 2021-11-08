@@ -245,7 +245,7 @@ const Page2 = (props) => {
           style={{
             margin: "1.5em",
             width: "12em",
-            border: "1px solid #7431a7",
+            border: "1px solid #0288d1",
             borderRadius: "10px",
           }}
         />

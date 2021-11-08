@@ -1,7 +1,7 @@
 from fastapi import *
 from pydantic import BaseModel
-
-
+import subprocess
+from fastapi.responses import FileResponse
 class body(BaseModel):
     name: str
     dob: str
@@ -28,6 +28,8 @@ class body(BaseModel):
 router = APIRouter()
 
 @router.post('/submit-form/')
-async def submit_form(body: body):
+async def submit_form(body: body): 
     print(body)
+    subprocess.call(["./execute.sh"])
+    return FileResponse('census-data-analysis.html')
     
