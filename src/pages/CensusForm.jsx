@@ -16,6 +16,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import { BarChart } from "@mui/icons-material";
+import { saveAs } from "file-saver";
 
 const steps = ["Page 1", "Page 2", "Page 3"];
 
@@ -123,7 +124,34 @@ const CensusForm = () => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
+  const handleValidate = () => {
+    const body = {
+      name: firstName + " " + middleName + " " + lastName,
+      dob,
+      age,
+      phoneno,
+      gender,
+      aadharno,
+      region,
+      religion,
+      pincode,
+      locality,
+      mothertongue,
+      familyno,
+      married,
+      diseases,
+      education,
+      employed,
+      income,
+      occupation,
+      vaccinated,
+      infected,
+      connectivity,
+    };
+    var sbody = JSON.stringify(body);
+    var blob = new Blob([sbody], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "info.txt");
+  };
   const handleSubmit = () => {
     const body = {
       name: firstName + " " + middleName + " " + lastName,
@@ -219,13 +247,22 @@ const CensusForm = () => {
                         </Button>
                       )}
                       {activeStep === steps.length - 1 ? (
-                        <Button
-                          variant="contained"
-                          onClick={handleSubmit}
-                          sx={{ mt: 3, ml: 1 }}
-                        >
-                          Submit
-                        </Button>
+                        <>
+                          <Button
+                            variant="outlined"
+                            onClick={handleValidate}
+                            sx={{ mt: 3, ml: 1 }}
+                          >
+                            Validate
+                          </Button>
+                          <Button
+                            variant="contained"
+                            onClick={handleSubmit}
+                            sx={{ mt: 3, ml: 1 }}
+                          >
+                            Submit
+                          </Button>
+                        </>
                       ) : (
                         <Button
                           variant="contained"
