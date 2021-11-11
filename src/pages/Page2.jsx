@@ -20,6 +20,60 @@ const Page2 = (props) => {
     { value: "Jain", label: "Jain" },
     { value: "Other", label: "Other" },
   ];
+  const mothertongue = [
+    {
+      value: "Hindi",
+      label: "Hindi",
+    },
+    {
+      value: "Marathi",
+      label: "Marathi",
+    },
+    {
+      value: "Gujarati",
+      label: "Gujarati",
+    },
+    {
+      value: "English",
+      label: "English",
+    },
+    {
+      value: "Punjabi",
+      label: "Punjabi",
+    },
+    {
+      value: "Tamil",
+      label: "Tamil",
+    },
+    {
+      value: "Bengali",
+      label: "Bengali",
+    },
+    {
+      value: "Assamese",
+      label: "Assamese",
+    },
+    {
+      value: "Sanskrit",
+      label: "Sanskrit",
+    },
+    {
+      value: "Odia",
+      label: "Odia",
+    },
+    {
+      value: "Telugu",
+      label: "Telugu",
+    },
+    {
+      value: "Kannada",
+      label: "Kannada",
+    },
+    {
+      value: "Malayalam",
+      label: "Malayalam",
+    },
+  ];
   const region = [
     {
       value: "Ahmednagar",
@@ -227,16 +281,16 @@ const Page2 = (props) => {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            required
+          <Autocomplete
+            disablePortal
             id="mothertongue"
-            name="mothertongue"
-            label="Mother Tongue"
-            type="text"
-            fullWidth
-            variant="standard"
+            options={mothertongue}
             value={props.mothertongue}
-            onChange={(e) => props.setMotherTongue(e.target.value)}
+            onInputChange={(event, value) => props.setMotherTongue(value)}
+            fullWidth
+            renderInput={(params) => (
+              <TextField {...params} label="Mother Tongue" />
+            )}
           />
         </Grid>
       </Grid>

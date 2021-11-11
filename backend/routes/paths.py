@@ -31,8 +31,6 @@ router = APIRouter()
 
 @router.post('/submit-form/')
 async def submit_form(body: body): 
-    print(body)
-
     edu = ["Primary","Secondary","Senior Secondary","Graduate","Post Graduate","Doctrate"]
     conn = ["3G","4G","5G","Broadband"]
 
@@ -109,11 +107,8 @@ async def submit_form(body: body):
     f"{body.occupation}",f"{body.diseases}",f"{checkvaccinated(body.vaccinated)}",f"{checkinfected(body.infected)}",\
     f"{checkconnectivity(body.connectivity)}"]
 
-    #print(row)
-
     with open('census-data.csv', 'a' ,newline='') as f:
         writer = csv.writer(f)
-        # write the data
         writer.writerow(row)
         f.close()
     subprocess.call(["./execute.sh"])

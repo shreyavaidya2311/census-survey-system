@@ -1,10 +1,9 @@
 import json
 import datetime
+from termcolor import colored
 
 with open('info.txt') as f:
     json_data = json.load(f)
-    #print(json_data)
-    print(json_data["name"])
     
 
 def valname():
@@ -72,59 +71,96 @@ def valdiseases():
         return True
     else:
         return False
-
-print("Running test case for name")
+passed = 0
+failed = 0
+print("Running Test Case for Name")
 if valname() == True:
-    print("Test case passed for Name.")
+    print(colored('Test Case passed for Name', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Name.")
+    print(colored('Test Case failed for Name', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for phone number")
+print("Running Test Case for Phone Number")
 if valphoneno() == True:
-    print("Test case passed for Phone Number.")
+    print(colored('Test Case passed for Phone Number', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Phone Number.")
+    print(colored('Test Case failed for Phone Number', 'red'))
+    failed += 1
+    print()
    
-print("Running test case for Aadhar Number")
+print("Running Test Case for Aadhar Number")
 if valaadharno() == True:
-    print("Test case passed for Aadhar Number.")
+    print(colored('Test Case passed for Aadhar Number', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Aadhar Number.")
+    print(colored('Test Case failed for Aadhar Number', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for Age")
+print("Running Test Case for Age")
 if valage() == True:
-    print("Test case passed for Age.")
+    print(colored('Test Case passed for Age', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Age.")
+    print(colored('Test Case failed for Age', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for number of members in family")
+print("Running Test Case for number of members in family")
 if valfamilyno() == True:
-    print("Test case passed for number of members in family.")
+    print(colored('Test Case passed for number of members in family', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for number of members in family.")
+    print(colored('Test Case failed for number of members in family', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for Annual Income.")
+print("Running Test Case for Annual Income")
 if valincome() == True:
-    print("Test case passed for Annual Income.")
+    print(colored('Test Case passed for Annual Income', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Annual Income.")
+    print(colored('Test Case failed for Annual Income', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for Date Of Birth.")
+print("Running Test Case for Date Of Birth")
 if valdob() == True:
-    print("Test case passed for Date Of Birth.")
+    print(colored('Test Case passed for Date Of Birth', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Date Of Birth.")
+    print(colored('Test Case failed for Date Of Birth', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for Occupation.")
+print("Running Test Case for Occupation")
 if valoccupation() == True:
-    print("Test case passed for Occupation.")
+    print(colored('Test Case passed for Occupation', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Occupation.")
+    print(colored('Test Case failed for Occupation', 'red'))
+    failed += 1
+    print()
 
-print("Running test case for Hereditary Diseases.")
+print("Running Test Case for Hereditary Diseases")
 if valdiseases() == True:
-    print("Test case passed for Hereditary Diseases.")
+    print(colored('Test Case passed for Hereditary Diseases', 'green'))
+    passed += 1
+    print()
 else:
-    print("Test case failed for Hereditary Diseases.")
+    print(colored('Test Case failed for Hereditary Diseases', 'red'))
+    failed += 1
+    print()
 
-
+print("Tests: ", colored('{} passed'.format(passed), 'green'), colored('{} failed'.format(failed), 'red'))
