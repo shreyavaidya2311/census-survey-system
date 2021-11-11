@@ -68,3 +68,9 @@ python3 app.py
 ```
 python3 tool.py
 ```
+
+## Contributors
+
+- <a href="https://github.com/shreyavaidya2311">Shreya Vaidya</a>
+- <a href="https://github.com/Varun-taneja">Varun Taneja</a>
+- <a href="https://github.com/yashdhake21">Yash Dhake</a>
